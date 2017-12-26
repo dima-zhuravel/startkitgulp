@@ -91,13 +91,14 @@ Example:
 
 ## USE TASKS
 
-* gulp watch - jade to HTML, sass to CSS, minify styles, minify scripts, запускатеся watcher следит за изменениями файлов и перезагружает.
+* gulp watch - jade to HTML, sass to CSS, minify styles, minify scripts, запускатеся watcher следит за изменениями файлов и перезагружает
 * gulp build - то же самое что и watch, но еще переносит файлы в папку `dist` 
+* gulp clean - удаляет папку `dist`
 * gulp clear - чистит кеш
 
 ## !IMPORTANT
 
-Важно, чиобы у `.jade` файлов был head и body иначе browserSync не сможет релоадить страницу.
+Важно, чтобы у `.jade` файлов был head и body иначе browserSync не сможет релоадить страницу.
 
 Eample:
 ```

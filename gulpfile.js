@@ -10,7 +10,8 @@ var gulp             = require('gulp'),
     imageminPngquant = require('imagemin-pngquant'),
     cache            = require('gulp-cache'),
     autoprefixer     = require('gulp-autoprefixer'),
-    jade             = require('gulp-jade');
+    jade             = require('gulp-jade'),
+    babel            = require('gulp-babel');
 
 gulp.task('jade', function(){ 
   return gulp.src('app/jade/*.jade')
@@ -45,6 +46,9 @@ gulp.task('scripts', function(){
   ])
   .pipe(concat('common.min.js'))
   .pipe(uglify())
+  .pipe(babel({
+    presets: ['env']
+  }))
   .pipe(gulp.dest('app/js'))
 })
 
@@ -84,7 +88,7 @@ gulp.task('img', function(){
 gulp.task('watch', ['browser-sync', 'jade', 'sass', 'styles', 'scripts'], function () {
   gulp.watch('app/jade/*.jade', ['jade']); 
   gulp.watch('app/scss/**/*.scss', ['sass']);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
+  gulp.watch('app/js/**/*.js', ['scripts']);
   gulp.watch('app/**/*.html', browserSync.reload);
 })
 
